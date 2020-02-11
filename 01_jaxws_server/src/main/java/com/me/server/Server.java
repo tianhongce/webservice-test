@@ -10,16 +10,18 @@ import javax.xml.ws.Endpoint;
 
 public class Server {
     public static void main(String []args){
-//        JaxWsServerFactoryBean factoryBean = new JaxWsServerFactoryBean();
-//
-//        factoryBean.setAddress("http://localhost:8000/ws/hello");
-//        factoryBean.setServiceBean(new HelloServiceImpl());
-//        factoryBean.getInInterceptors().add(new LoggingInInterceptor());
-//        factoryBean.getOutInterceptors().add(new LoggingOutInterceptor());
-//        factoryBean.create();
 
-        String address="http://localhost:8000/ws/hello";
-        Endpoint.publish(address,new HelloServiceImpl());
+        //使用cxf发布服务
+        JaxWsServerFactoryBean factoryBean = new JaxWsServerFactoryBean();
+        factoryBean.setAddress("http://localhost:8000/ws/hello");
+        factoryBean.setServiceBean(new HelloServiceImpl());
+        factoryBean.getInInterceptors().add(new LoggingInInterceptor());
+        factoryBean.getOutInterceptors().add(new LoggingOutInterceptor());
+        factoryBean.create();
+
+        //使用Endpoint发布服务
+//        String address="http://localhost:8000/ws/hello";
+//        Endpoint.publish(address,new HelloServiceImpl());
 
         System.out.println("发布服务成功 8000");
 
