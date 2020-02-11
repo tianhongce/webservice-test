@@ -1,6 +1,7 @@
 package com.me.server;
 
 import com.me.service.impl.HelloServiceImpl;
+import com.me.service.impl.UserServiceImpl;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
@@ -18,6 +19,13 @@ public class Server {
         factoryBean.getInInterceptors().add(new LoggingInInterceptor());
         factoryBean.getOutInterceptors().add(new LoggingOutInterceptor());
         factoryBean.create();
+
+        JaxWsServerFactoryBean factoryBean1 = new JaxWsServerFactoryBean();
+        factoryBean1.setAddress("http://localhost:8000/ws/user");
+        factoryBean1.setServiceBean(new UserServiceImpl());
+        factoryBean1.getInInterceptors().add(new LoggingInInterceptor());
+        factoryBean1.getOutInterceptors().add(new LoggingOutInterceptor());
+        factoryBean1.create();
 
         //使用Endpoint发布服务
 //        String address="http://localhost:8000/ws/hello";

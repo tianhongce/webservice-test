@@ -20,4 +20,36 @@
             <bean class="com.me.service.impl.HelloServiceImpl"></bean>
         </jaxws:serviceBean>
     </jaxws:server>
+    <jaxws:server address="/user">
+        <jaxws:serviceBean>
+            <bean class="com.me.service.impl.UserServiceImpl"></bean>
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+    <!--Endpoint方式发布服务-->
+<!--    <jaxws:endpoint id="HelloService"
+                    implementor="com.me.service.impl.HelloServiceImpl"
+                    address="/hello">
+        &lt;!&ndash; 添加客服端请求拦截器 &ndash;&gt;
+        <jaxws:inInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+        </jaxws:inInterceptors>
+        &lt;!&ndash; 添加服务器端响应拦截器 &ndash;&gt;
+        <jaxws:outInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+        </jaxws:outInterceptors>
+    </jaxws:endpoint>
+    <jaxws:endpoint id="UserService"
+                    implementor="com.me.service.impl.UserServiceImpl"
+                    address="/user">
+        &lt;!&ndash; 添加客服端请求拦截器 &ndash;&gt;
+        <jaxws:inInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+        </jaxws:inInterceptors>
+        &lt;!&ndash; 添加服务器端响应拦截器 &ndash;&gt;
+        <jaxws:outInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+        </jaxws:outInterceptors>
+    </jaxws:endpoint>-->
+
 </beans>
